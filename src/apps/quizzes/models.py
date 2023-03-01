@@ -16,7 +16,7 @@ class Quiz(TimestampModel):
 
 class Question(TimestampModel, ActiveModel):
     quiz = models.ForeignKey(
-        "Quiz", related_name="quiz_questions", on_delete=models.CASCADE
+        "Quiz", related_name="questions", on_delete=models.CASCADE
     )
     score = models.PositiveIntegerField(default=1)
     name = models.CharField(max_length=255)
