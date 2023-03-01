@@ -15,7 +15,7 @@ services:
     depends_on:
         - talataa_db
   talataa_db:
-    image: "postgres:14"
+    image: "postgres:13-alpine"
     restart: unless-stopped
     env_file:
         - ./.env
