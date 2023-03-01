@@ -20,8 +20,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", include(("apps.users.urls", "users"), namespace="users")),
-    path("", include(("apps.events.urls", "events"), namespace="events")),
-    path("", include(("apps.orders.urls", "orders"), namespace="orders")),
 ]
 if settings.DEBUG:
     urlpatterns += static(

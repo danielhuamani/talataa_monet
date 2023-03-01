@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # third apps
-    # "apps.users.apps.UsersConfig",
-
+    # my apps
+    "apps.users.apps.UsersConfig",
+    "apps.students.apps.StudentsConfig",
+    "apps.quizzes.apps.QuizzesConfig",
+    "apps.core.apps.CoreConfig",
 ]
 
 MIDDLEWARE = [
