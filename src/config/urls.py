@@ -19,7 +19,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("", include(("apps.users.urls", "users"), namespace="users")),
+    path("admin/", admin.site.urls),
+    path("_nested_admin/", include("nested_admin.urls")),
+    path("api/", include(("apps.users.urls", "users"), namespace="users")),
+    path(
+        "api/",
+        include(("apps.students.urls", "students"), namespace="students"),
+    ),
+    path(
+        "api/", include(("apps.quizzes.urls", "quizzes"), namespace="quizzes")
+    ),
 ]
 if settings.DEBUG:
     urlpatterns += static(

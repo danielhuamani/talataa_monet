@@ -1,20 +1,10 @@
-from django.urls import include, path
-from .views import (
-    LoginView,
-    RegisterView,
-    logout_view,
-    MyTicketView,
-    MyTickeDetailView,
+from django.urls import path
+from .apis import LoginTokenAPI
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
 )
 
 urlpatterns = [
-    path("ingresar", LoginView.as_view(), name="login"),
-    path("salir", logout_view, name="logout_view"),
-    path("registrar", RegisterView.as_view(), name="register"),
-    path("mis-compras", MyTicketView.as_view(), name="my_tickets"),
-    path(
-        "mis-compras/<int:pk>/",
-        MyTickeDetailView.as_view(),
-        name="my_tickets_detail",
-    ),
+    path("login/", LoginTokenAPI.as_view(), name="token_obtain_pair"),
+    path("login/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]

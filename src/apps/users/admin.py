@@ -30,6 +30,7 @@ class UserAdmin(UserAdmin):
                     "email",
                     "password",
                     "first_name",
+                    "role",
                     "last_name",
                     "is_active",
                     "date_joined",

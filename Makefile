@@ -1,12 +1,12 @@
 build:
 	docker-compose -f ./docker/docker-compose.yml build 
-run:
+up:
 	docker-compose -f ./docker/docker-compose.yml up 
 migrate:
-	docker-compose -f ./docker/docker-compose.yml exec --rm silabuz python ./src/manage.py migrate 
+	docker-compose -f ./docker/docker-compose.yml exec --rm talataa python ./src/manage.py migrate 
 migrations:
-	docker-compose -f ./docker/docker-compose.yml exec silabuz python ./src/manage.py makemigrations
+	docker-compose -f ./docker/docker-compose.yml exec talataa python ./src/manage.py makemigrations
 test:
 	# FUNCTION="unit/apps/test_product.py"
 	# PARAMS="-rm"
-	docker-compose -f ./docker/docker-compose.yml run --rm silabuz pytest ./src/tests/${FUNCTION} ${PARAMS}
+	docker-compose -f ./docker/docker-compose.yml run --rm talataa pytest ./src/tests/${FUNCTION} ${PARAMS}

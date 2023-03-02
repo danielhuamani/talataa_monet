@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,6 +46,10 @@ INSTALLED_APPS = [
     "apps.students.apps.StudentsConfig",
     "apps.quizzes.apps.QuizzesConfig",
     "apps.core.apps.CoreConfig",
+    # third apps
+    "rest_framework",
+    "rest_framework_simplejwt",
+    "nested_admin",
 ]
 
 MIDDLEWARE = [
@@ -143,3 +148,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 MEDIA_URL = "/media/"
+
+REST_FRAMEWORK = {}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60 * 12),
+}
