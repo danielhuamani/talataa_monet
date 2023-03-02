@@ -28,7 +28,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=RoleChoices.main_user,
     )
     objects = UserManager()
-
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import Permission
 from apps.core.models import TimestampModel
 
 # Create your models here.
@@ -8,9 +9,18 @@ class Student(models.Model):
     )
     level = models.CharField(max_length=100, blank=True)
 
+    PERMISSION_ADMIN = ["view_studentquiz", "view_studentquizanswer"]
+
     class Meta:
         verbose_name = "Student"
         verbose_name_plural = "Students"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        permission = Permission.objects.filter(
+            codename__in=Student.PERMISSION_ADMIN
+        )
+        self.user.user_permissions.add(*permission)
 
     def __str__(self):
         return self.user.first_name
@@ -28,11 +38,11 @@ class StudentQuiz(TimestampModel):
     score = models.PositiveIntegerField()
 
     def __str__(self):
-        pass
+        return f"{self.student.user.first_name} {self.quiz.name}"
 
     class Meta:
-        verbose_name = "StudentQuiz"
-        verbose_name_plural = "StudentQuizs"
+        verbose_name = "Student Quiz"
+        verbose_name_plural = "Student Quizzes"
 
 
 class StudentQuizAnswer(TimestampModel):
@@ -53,8 +63,8 @@ class StudentQuizAnswer(TimestampModel):
     )
 
     def __str__(self):
-        pass
+        return self.question.name
 
     class Meta:
-        verbose_name = "StudentQuiz"
-        verbose_name_plural = "StudentQuizs"
+        verbose_name = "StudentQuizAnswer"
+        verbose_name_plural = "StudentQuizAnswers"

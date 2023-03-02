@@ -7,9 +7,7 @@ def create_student_quiz_case(student, quiz, answers):
         student=student, quiz=quiz, score=0
     )
     total_score = 0
-    print("answers", answers)
     for answer in answers["answers"]:
-        print("answer", answer)
         question_option = QuestionOption.objects.get(
             id=answer["question_option"]
         )

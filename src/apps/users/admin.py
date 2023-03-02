@@ -18,7 +18,8 @@ class MyUserChangeForm(UserChangeForm):
 class UserAdmin(UserAdmin):
     form = MyUserChangeForm
     add_form = MyUserCreationForm
-    list_display = ["email"]
+    model = User
+    list_display = ["email", "role"]
     ordering = ["email"]
     readonly_fields = ["date_joined"]
     search_fields = ["email", "first_name"]
@@ -55,7 +56,13 @@ class UserAdmin(UserAdmin):
             None,
             {
                 "classes": ("wide",),
-                "fields": ("email", "password1", "password2"),
+                "fields": (
+                    "email",
+                    "password1",
+                    "password2",
+                    "role",
+                    "is_staff",
+                ),
             },
         ),
     )
