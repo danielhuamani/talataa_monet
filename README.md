@@ -27,13 +27,14 @@ make migrations
 make migrate
 ```
 
-Login with jwt token
-![Alt text](./swagger.png "swagger auth")
-
-
 ## Project Run Unit Test
 
 ### Run Test
 ```
 make test
 ```
+
+
+Image Coverage
+![Alt text](./coverage.png "swagger auth")
+
