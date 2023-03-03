@@ -7,6 +7,6 @@ migrate:
 migrations:
 	docker-compose -f ./docker/docker-compose.yml exec talataa python ./src/manage.py makemigrations
 test:
-	# FUNCTION="unit/apps/test_product.py"
+	# FUNCTION="unittest/test_models.py"
 	# PARAMS="-rm"
 	docker-compose -f ./docker/docker-compose.yml run --rm talataa_test pytest ./src/tests/${FUNCTION} ${PARAMS}
