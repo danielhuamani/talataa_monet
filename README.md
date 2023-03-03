@@ -39,7 +39,7 @@ Image Coverage
 ![Alt text](./coverage.png "swagger auth")
 
 
-## Entity Relationship Diagram - Main Tables
+## Entity Relationship Diagram - Main Entities
 
 
 ```mermaid
