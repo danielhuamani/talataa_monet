@@ -7,9 +7,10 @@ COPY ./requirements/ ./requirements
 RUN pip install -r ./requirements/local.txt
 # separted in other dockerfile
 RUN pip install -r ./requirements/test.txt
+COPY tox.ini tox.ini
 
-COPY ./docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# COPY ./docker/entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
+# ENTRYPOINT ["/entrypoint.sh"]
 ENV PYTHONUNBUFFERED 1
 EXPOSE 8000

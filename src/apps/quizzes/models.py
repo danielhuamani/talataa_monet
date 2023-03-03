@@ -14,9 +14,9 @@ class Quiz(TimestampModel):
         verbose_name = "Quiz"
         verbose_name_plural = "Quizs"
 
-    def total_score_by_all_questions(self):
+    def get_total_score_by_all_questions(self):
         result = self.questions.all().aggregate(total_score=Sum("score"))
-        if result:
+        if result.get("total_score"):
             return result.get("total_score")
         return 0
 

@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import RetrieveAPIView
 from apps.core.mixins import LoginRequiredMixin, LoginStudentRequiredMixin
 from apps.students.use_cases import create_student_quiz_case
+from rest_framework import status
 from .serializers import QuizSerializer, QuizAnswersSerializer
 from .models import Quiz, Question
 
@@ -41,7 +42,7 @@ class QuizStarAPI(LoginStudentRequiredMixin, APIView):
             {
                 "id": student_quiz.id,
                 "student_score": student_quiz.score,
-                "total": quiz.total_score_by_all_questions(),
+                "total": quiz.get_total_score_by_all_questions(),
             },
-            200,
+            status.HTTP_201_CREATED,
         )

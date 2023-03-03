@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import Permission
 from apps.core.models import TimestampModel
 
 # Create your models here.
@@ -14,13 +13,6 @@ class Student(models.Model):
     class Meta:
         verbose_name = "Student"
         verbose_name_plural = "Students"
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        permission = Permission.objects.filter(
-            codename__in=Student.PERMISSION_ADMIN
-        )
-        self.user.user_permissions.add(*permission)
 
     def __str__(self):
         return self.user.first_name

@@ -61,6 +61,13 @@ class QuizAnswersSerializer(serializers.Serializer):
         question_count = Question.objects.filter(
             is_active=True, quiz=self.context.get("quiz")
         ).count()
+        print(
+            "quest",
+            list(set(map(lambda x: x["question"], value))),
+            question_count,
+        )
         if question_count != len(value):
             raise serializers.ValidationError("incomplete questions")
+        if question_count != len(set(map(lambda x: x["question"], value))):
+            raise serializers.ValidationError("question duplicated")
         return value
