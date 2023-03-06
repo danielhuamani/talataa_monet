@@ -13,7 +13,7 @@ make build
 
 ### Run 
 ```
-make run
+make up
 ```
 
 ### Run Migrations and Migrate
